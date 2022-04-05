@@ -31,6 +31,7 @@ There is also a quick command for migrating / "generating" the numbers for the c
 
 ## Credits
 [NativeUILua](https://github.com/FrazzIe/NativeUILua) - Frazzle for making the amazing NativeUILua library which is bundled with this resource.
+[EUP-Menu](https://github.com/Andyyy7666/EUP-Menu) - Andyyy7666 for some of the inspiration and some of the function that actually sets your components/props.
 
 ## Final words
 Hopefully my small contribution to this great community will be appreciated by those who find this useful. Feel free to do whatever you want with this, just don't come crying or sue me if something goes wrong. If you want to claim you made this so your server members are proud of you and think you have a massive brain, go ahead. Even though the license technically permits it, please, if you change one line and decide to sell it, know that you are an asshole.
