@@ -46,17 +46,17 @@ local eupMenus = {}
 
 -- Menu creation logic
 local function CreateMenus()
-    for gender, genderData  in pairs(Clothing) do
-        local genderMenu = NativeUI.CreateMenu("Clothing", "Main Menu", 1420, 100, "banner", "banner")
-        for _, dept in ipairs(genderData) do
-            local deptMenu = _menuPool:AddSubMenu(genderMenu, dept.deptName, "", true, "banner", "banner")
+    for ped, pedData in pairs(Clothing) do
+        local pedMenu = NativeUI.CreateMenu("Clothing", "Main Menu", 1420, 100, "banner", "banner")
+        for _, dept in ipairs(pedData) do
+            local deptMenu = _menuPool:AddSubMenu(pedMenu, dept.deptName, "", true, "banner", "banner")
             if dept.presets ~= nil and #dept.presets > 0 then
                 local deptPresetMenu = _menuPool:AddSubMenu(deptMenu, "Ped Presets", "", true, "banner", "banner")
                 for _, presetCategory in ipairs(dept.presets) do
                     local deptPresetCategoryMenu = _menuPool:AddSubMenu(deptPresetMenu, presetCategory.categoryName, "", true, "banner", "banner")
                     for _, presetData in ipairs(presetCategory.presets) do
                         local presetItem = NativeUI.CreateItem(presetData.name, "")
-                        presetItem:SetLeftBadge(BadgeStyle.Clothes)
+                        presetItem:SetLeftBadge(pedData.badgeStyle ~= nil and pedData.badgeStyle or BadgeStyle.Clothes)
                         deptPresetCategoryMenu:AddItem(presetItem)
                         presetItem.Activated = function(ParentMenu, SelectedItem)
                             SetClothingPreset(presetData)
@@ -101,17 +101,17 @@ local function CreateMenus()
         end
 
         local resetItem = NativeUI.CreateItem("~r~Reset Ped", "This will reset your clothing back to a default state.")
-        genderMenu:AddItem(resetItem)
+        pedMenu:AddItem(resetItem)
         resetItem.Activated = function(ParentMenu, SelectedItem)
             SetClothingPreset(resetPedPreset)
         end
 
 
-        _menuPool:Add(genderMenu)
+        _menuPool:Add(pedMenu)
         _menuPool:ControlDisablingEnabled(false)
         _menuPool:MouseControlsEnabled(false)
         _menuPool:RefreshIndex()
-        eupMenus[gender] = genderMenu
+        eupMenus[ped] = pedMenu
     end
 end
 

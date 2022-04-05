@@ -1,5 +1,6 @@
 Clothing = {
     [`mp_m_freemode_01`] = { -- This is the hashkey of the ped, note the `
+        badgeStyle = BadgeStyle.Male, -- This badge is added in front of all the ped presets.
         {
             deptName = "Los Santos Police Department",
             presets = {
@@ -85,6 +86,7 @@ Clothing = {
         }
     },
     [`mp_f_freemode_01`] = {
+        badgeStyle = BadgeStyle.Female,
         {
             deptName = "Department 1",
         },
