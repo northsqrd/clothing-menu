@@ -30,7 +30,7 @@ There is also a quick command for migrating / "generating" the numbers for the c
 
 
 ## Credits
-[NativeUILua](https://github.com/FrazzIe/NativeUILua) - Frazzle for making the amazing NativeUILua library which is bundled with this resource.
+[NativeUILua](https://github.com/FrazzIe/NativeUILua) - Frazzle for making the amazing NativeUILua library which is bundled with this resource.<br>
 [EUP-Menu](https://github.com/Andyyy7666/EUP-Menu) - Andyyy7666 for some of the inspiration and some of the function that actually sets your components/props.
 
 ## Final words
