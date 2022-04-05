@@ -61,7 +61,7 @@ NativeUI = {}
 
 CharacterMap = { [' '] = 6, ['!'] = 6, ['"'] = 6, ['#'] = 11,['$'] = 10, ['%'] = 17,['&'] = 13, ['\\'] = 4,['('] = 6, [')'] = 6,['*'] = 7, ['+'] = 10, [','] = 4, ['-'] = 6,  ['.'] = 4,  ['/'] = 7,  ['0'] = 12, ['1'] = 7,  ['2'] = 11, ['3'] = 11, ['4'] = 11, ['5'] = 11, ['6'] = 12, ['7'] = 10, ['8'] = 11, ['9'] = 11, [':'] = 5,  [';'] = 4,  ['<'] = 9,  ['='] = 9,  ['>'] = 9,  ['?'] = 10, ['@'] = 15, ['A'] = 12, ['B'] = 13, ['C'] = 14, ['D'] = 14, ['E'] = 12, ['F'] = 12, ['G'] = 15, ['H'] = 14, ['I'] = 5,  ['J'] = 11, ['K'] = 13, ['L'] = 11, ['M'] = 16, ['N'] = 14, ['O'] = 16, ['P'] = 12, ['Q'] = 15, ['R'] = 13, ['S'] = 12, ['T'] = 11, ['U'] = 13, ['V'] = 12, ['W'] = 18, ['X'] = 11, ['Y'] = 11, ['Z'] = 12, ['['] = 6,  [']'] = 6,  ['^'] = 9,  ['_'] = 18, ['`'] = 8,  ['a'] = 11, ['b'] = 12, ['c'] = 11, ['d'] = 12, ['e'] = 12, ['f'] = 5,  ['g'] = 13, ['h'] = 11, ['i'] = 4,  ['j'] = 4,  ['k'] = 10, ['l'] = 4,  ['m'] = 18, ['n'] = 11, ['o'] = 12, ['p'] = 12, ['q'] = 12, ['r'] = 7,  ['s'] = 9,  ['t'] = 5,  ['u'] = 11, ['v'] = 10, ['w'] = 14, ['x'] = 9,  ['y'] = 10, ['z'] = 9,  ['{'] = 6,  ['|'] = 3,  ['}'] = 6 }
 
-BadgeStyle = { None = 0, BronzeMedal = 1, GoldMedal = 2, SilverMedal = 3, Alert = 4, Crown = 5, Ammo = 6, Armour = 7, Barber = 8, Clothes = 9, Franklin = 10, Bike = 11, Car = 12, Gun = 13, Heart = 14, Makeup = 15, Mask = 16, Michael = 17, Star = 18, Tattoo = 19, Trevor = 20, Lock = 21, Tick = 22 }
+BadgeStyle = { None = 0, BronzeMedal = 1, GoldMedal = 2, SilverMedal = 3, Alert = 4, Crown = 5, Ammo = 6, Armour = 7, Barber = 8, Clothes = 9, Franklin = 10, Bike = 11, Car = 12, Gun = 13, Heart = 14, Makeup = 15, Mask = 16, Michael = 17, Star = 18, Tattoo = 19, Trevor = 20, Lock = 21, Tick = 22, Male = 23, Female = 24}
 
 BadgeTexture = {
     [0] = function() return "" end,
@@ -87,6 +87,8 @@ BadgeTexture = {
     [20] = function(Selected) if Selected then return "shop_trevor_icon_b" else return "shop_trevor_icon_a" end end,
     [21] = function() return "shop_lock" end,
     [22] = function() return "shop_tick_icon" end,
+    [23] = function() return "leaderboard_male_icon" end,
+    [24] = function() return "leaderboard_female_icon" end,
 }
 
 BadgeDictionary = {
@@ -97,12 +99,28 @@ BadgeDictionary = {
             return "commonmenu"
         end
     end,
+    [23] = function(Selected)
+        if Selected then
+            return "mpleaderboard"
+        else
+            return "mpleaderboard"
+        end
+    end,
+    [24] = function(Selected)
+        if Selected then
+            return "mpleaderboard"
+        else
+            return "mpleaderboard"
+        end
+    end,
 }
 
 BadgeColour = {
     [5] = function(Selected) if Selected then return 0, 0, 0, 255 else return 255, 255, 255, 255 end end,
     [21] = function(Selected) if Selected then return 0, 0, 0, 255 else return 255, 255, 255, 255 end end,
     [22] = function(Selected) if Selected then return 0, 0, 0, 255 else return 255, 255, 255, 255   end end,
+    [23] = function(Selected) if Selected then return 0, 0, 0, 255 else return 255, 255, 255, 255   end end,
+    [24] = function(Selected) if Selected then return 0, 0, 0, 255 else return 255, 255, 255, 255   end end,
 }
 
 Colours = {
