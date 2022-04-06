@@ -146,31 +146,8 @@ CreateThread(function()
     end
 end)
 
--- Ids 0 - Head 1 - Beard 2 - Hair 3 - Torso 4 - Legs 5 - Hands 6 - Foot 7 - ------ 8 - Accessories 1 9 - Accessories 2 10- Decals 11 - Auxiliary parts for torso
-local clothingIdentifierNames = {
-    components = {
-        [0] = "Head (Remove unless needed for preset)",
-        [1] = "Mask / Facial Hair (Remove unless needed for preset)",
-        [2] = "Hair style (Remove unless needed for preset)",
-        [3] = "Hands / Upper Body",
-        [4] = "Legs / pants",
-        [5] = "Hands / Upper Body",
-        [6] = "Foot",
-        [7] = "Neck / Holsters",
-        [8] = "Shirt / Accessory",
-        [9] = "Body Armor / Accessory 2",
-        [10] = "Badges and Logos",
-        [11] = "Shirt Overlay / Jackets",
-    },
-    props = {
-        [0] = "Hats / Helmets",
-        [1] = "Glasses",
-        [2] = "Misc / Ear Accessories",
-        [3] = "Watches",
-        [4] = "Bracelets",
-    }
 
-}
+local clothingIdentifierNames = {components={[0]="Head (Remove unless needed for preset)",[1]="Mask / Facial Hair (Remove unless needed for preset)",[2]="Hair style (Remove unless needed for preset)",[3]="Hands / Upper Body",[4]="Legs / pants",[5]="Hands / Upper Body",[6]="Foot",[7]="Neck / Holsters",[8]="Shirt / Accessory",[9]="Body Armor / Accessory 2",[10]="Badges and Logos",[11]="Shirt Overlay / Jackets"},props={[0]="Hats / Helmets",[1]="Glasses",[2]="Misc / Ear Accessories",[3]="Watches",[4]="Bracelets"}}
 
 TriggerEvent("chat:addSuggestion", "/getclothing", "Debug command to get the numbers of all the components and props.")
 RegisterCommand("getclothing", function()
