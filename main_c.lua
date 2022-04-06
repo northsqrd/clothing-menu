@@ -42,7 +42,7 @@ function SetComponent(componentData, index)
     end
 end
 
-local eupMenus = {}
+local clothingMenus = {}
 
 -- Menu creation logic
 local function CreateMenus()
@@ -111,7 +111,7 @@ local function CreateMenus()
         _menuPool:ControlDisablingEnabled(false)
         _menuPool:MouseControlsEnabled(false)
         _menuPool:RefreshIndex()
-        eupMenus[ped] = pedMenu
+        clothingMenus[ped] = pedMenu
     end
 end
 
@@ -123,12 +123,12 @@ local function HandleClothingCommand()
         return
     end
 
-    if not eupMenus[pedModel] then
+    if not clothingMenus[pedModel] then
         DisplayHelpText("You need to use a valid ped to access this menu.")
         return
     end
 
-    eupMenus[pedModel]:Visible(true)
+    clothingMenus[pedModel]:Visible(true)
 end
 
 TriggerEvent("chat:addSuggestion", "/clothing", "Opens the clothing menu.")
