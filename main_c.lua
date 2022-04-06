@@ -176,7 +176,7 @@ RegisterCommand("getclothing", function()
 
     finalString = finalString .. "components = {\n"
     for k, v in ipairs(components) do
-        finalString = finalString .. string.format("   {%d, %d, %d}, --%s\n", v[1], v[2], v[3], clothingIdentifierNames.components[k - 1])
+        finalString = finalString .. string.format("   %s{%d, %d, %d}, --%s\n", ((k == 1 or k == 3 ) and "--" or ""), v[1], v[2], v[3], clothingIdentifierNames.components[k - 1])
     end
     finalString = finalString .. "},"
 
