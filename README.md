@@ -26,7 +26,7 @@ TriggerEvent("chat:addSuggestion", "/eup", "Opens the clothing menu.")
 RegisterCommand("eup", HandleClothingCommand)
 ```
 
-There is also a quick command for migrating / "generating" the numbers for the components and props your current ped has. This is done using the `/getclothing` command. This will print into the F8 console, then you can open the log by click the button in the lower right corner of the console (or your FiveM logs folder) and paste the generated text into the config, found in `clothing.lua`
+There is also a quick command for migrating / "generating" the numbers for the components and props your current ped has. This is done using the `/getclothing` command. This will automatically copy the text to your clipboard so you can paste the generated text into the config, found in `clothing.lua`. Make sure to remove components and props that are not necessary for that preset.
 
 
 ## Credits
