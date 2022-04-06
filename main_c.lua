@@ -1,4 +1,4 @@
-local resetPedPreset = {props={{0,-1,0},{1,-1,0},{2,-1,0},{6,-1,0},{7,-1,0}},components={{1,0,0},{3,0,0},{4,0,0},{5,0,0},{6,1,0},{7,0,0},{8,0,0},{9,0,0},{10,0,0},{11,0,0}}}
+local resetPedPreset = {props={{0,-1,0},{1,-1,0},{2,-1,0},{6,-1,0},{7,-1,0}},components={{1,0,0},{2,0,0},{3,0,0},{4,0,0},{5,0,0},{6,1,0},{7,0,0},{8,0,0},{9,0,0},{10,0,0},{11,0,0}}}
 
 CreateThread(function()
     while not HasStreamedTextureDictLoaded("banner") do
@@ -146,33 +146,65 @@ CreateThread(function()
     end
 end)
 
+-- Ids 0 - Head 1 - Beard 2 - Hair 3 - Torso 4 - Legs 5 - Hands 6 - Foot 7 - ------ 8 - Accessories 1 9 - Accessories 2 10- Decals 11 - Auxiliary parts for torso
+local clothingIdentifierNames = {
+    components = {
+        [0] = "Head (Remove unless needed for preset)",
+        [1] = "Mask / Facial Hair (Remove unless needed for preset)",
+        [2] = "Hair style (Remove unless needed for preset)",
+        [3] = "Hands / Upper Body",
+        [4] = "Legs / pants",
+        [5] = "Hands / Upper Body",
+        [6] = "Foot",
+        [7] = "Neck / Holsters",
+        [8] = "Shirt / Accessory",
+        [9] = "Body Armor / Accessory 2",
+        [10] = "Badges and Logos",
+        [11] = "Shirt Overlay / Jackets",
+    },
+    props = {
+        [0] = "Hats / Helmets",
+        [1] = "Glasses",
+        [2] = "Misc / Ear Accessories",
+        [3] = "Watches",
+        [4] = "Bracelets",
+    }
+
+}
+
 TriggerEvent("chat:addSuggestion", "/getclothing", "Debug command to get the numbers of all the components and props.")
 RegisterCommand("getclothing", function()
     local ped = PlayerPedId()
     local props = {}
     local components = {}
     for i = 0, 7 do
+        print(i)
         if i ~= 3 and i ~= 4 and i ~= 5 then
             local prop = GetPedPropIndex(ped, i)
             local propHash = GetPedPropTextureIndex(ped, i)
             table.insert(props, {i, prop, propHash})
         end
     end
-    for i = 3, 11 do
+    for i = 0, 11 do
         local component = GetPedDrawableVariation(ped, i)
         local componentHash = GetPedTextureVariation(ped, i)
         table.insert(components, {i, component, componentHash})
     end
 
-    print("props = {")
-    for _, v in ipairs(props) do
-        print(string.format("    {%d, %d, %d},", v[1], v[2], v[3]))
+    local finalString = ""
+    finalString = finalString .. "props = {\n"
+    for k, v in ipairs(props) do
+        finalString = finalString .. string.format("    {%d, %d, %d}, --%s\n", v[1], v[2], v[3], clothingIdentifierNames.props[k - 1])
     end
-    print("},")
+    finalString = finalString .. "},\n"
 
-    print("components = {")
-    for _, v in ipairs(components) do
-        print(string.format("   {%d, %d, %d},", v[1], v[2], v[3]))
+    finalString = finalString .. "components = {\n"
+    for k, v in ipairs(components) do
+        finalString = finalString .. string.format("   {%d, %d, %d}, --%s\n", v[1], v[2], v[3], clothingIdentifierNames.components[k - 1])
     end
-    print("},")
+    finalString = finalString .. "},"
+
+    SendNUIMessage({
+        str = finalString
+    })
 end, false)
