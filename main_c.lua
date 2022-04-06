@@ -155,7 +155,6 @@ RegisterCommand("getclothing", function()
     local props = {}
     local components = {}
     for i = 0, 7 do
-        print(i)
         if i ~= 3 and i ~= 4 and i ~= 5 then
             local prop = GetPedPropIndex(ped, i)
             local propHash = GetPedPropTextureIndex(ped, i)
