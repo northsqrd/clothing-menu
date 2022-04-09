@@ -10,11 +10,11 @@ I have also included a menu banner, slightly inspired by the EUP menu made for L
 
 If you want to remove the banner entirely, you can do so by removing the `"banner", "banner"` at the end of every line that contains it. For example: 
 
-`local genderMenu = NativeUI.CreateMenu("Clothing", "Main Menu", 1420, 100, "banner", "banner")`
+`local pedMenu = NativeUI.CreateMenu("Clothing", "Main Menu", 1420, 100, "banner", "banner")`
 
 becomes
 
-`local genderMenu = NativeUI.CreateMenu("Clothing", "Main Menu", 1420, 100)`
+`local pedMenu = NativeUI.CreateMenu("Clothing", "Main Menu", 1420, 100)`
 
 ## Commands
 The default commands are `/clothing` and `/eup`, but they can be changed at line 134-138.
