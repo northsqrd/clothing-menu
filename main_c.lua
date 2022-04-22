@@ -1,5 +1,9 @@
 local resetPedPreset = {props={{0,-1,0},{1,-1,0},{2,-1,0},{6,-1,0},{7,-1,0}},components={{1,0,0},{3,0,0},{4,0,0},{5,0,0},{6,1,0},{7,0,0},{8,0,0},{9,0,0},{10,0,0},{11,0,0}}}
 
+local cfg = {}
+cfg.menuX = 1420
+cfg.menuY = 0
+
 CreateThread(function()
     while not HasStreamedTextureDictLoaded("banner") do
         Wait(0)
@@ -47,7 +51,7 @@ local clothingMenus = {}
 -- Menu creation logic
 local function CreateMenus()
     for ped, pedData in pairs(Clothing) do
-        local pedMenu = NativeUI.CreateMenu("Clothing", "Main Menu", 1420, 100, "banner", "banner")
+        local pedMenu = NativeUI.CreateMenu("Clothing", "Main Menu", cfg.menuX, cfg.menuY, "banner", "banner")
         for _, dept in ipairs(pedData) do
             local deptMenu = _menuPool:AddSubMenu(pedMenu, dept.deptName, "", true, "banner", "banner")
             if dept.presets ~= nil and #dept.presets > 0 then
