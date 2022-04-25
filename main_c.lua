@@ -20,14 +20,19 @@ end
 
 local function SetClothingPreset(presetData)
     local ped = PlayerPedId()
-    for _, component in ipairs(presetData.components) do
-        SetPedComponentVariation(ped, component[1], component[2], component[3], 0)
+    if presetData.components then
+        for _, component in ipairs(presetData.components) do
+            SetPedComponentVariation(ped, component[1], component[2], component[3], 0)
+        end
     end
-    for _, prop in ipairs(presetData.props) do
-        if prop[2] == -1 then
-            ClearPedProp(ped, prop[1])
-        else
-            SetPedPropIndex(ped, prop[1], prop[2], prop[3], true)
+
+    if presetData.props then
+        for _, prop in ipairs(presetData.props) do
+            if prop[2] == -1 then
+                ClearPedProp(ped, prop[1])
+            else
+                SetPedPropIndex(ped, prop[1], prop[2], prop[3], true)
+            end
         end
     end
 end
@@ -63,32 +68,34 @@ local function CreateMenus()
                     deptPresetCategoryMenu.ParentItem:RightLabel("→→→")
                     for _, presetData in ipairs(presetCategory.presets) do
                         local presetItem = NativeUI.CreateItem(presetData.name, "")
-                        presetItem:SetLeftBadge(pedData.badgeStyle ~= nil and pedData.badgeStyle or BadgeStyle.Clothes)
+                        if pedData.badgeStyle ~= nil then
+                            presetItem:SetLeftBadge(pedData.badgeStyle)
+                        end
                         deptPresetCategoryMenu:AddItem(presetItem)
                         presetItem.Activated = function(ParentMenu, SelectedItem)
                             SetClothingPreset(presetData)
                         end
                     end
-                    local GoBackItem = NativeUI.CreateItem("Go back", "")
+                    local GoBackItem = NativeUI.CreateItem("← Go back", "")
                     deptPresetCategoryMenu:AddItem(GoBackItem)
                     GoBackItem.Activated = function(ParentMenu, SelectedItem)
                         deptPresetCategoryMenu:GoBack()
                     end
 
-                    local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                    local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
                     deptPresetCategoryMenu:AddItem(CloseMenuItem)
                     CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                         _menuPool:CloseAllMenus()
                     end
                 end
 
-                local GoBackItem = NativeUI.CreateItem("Go back", "")
+                local GoBackItem = NativeUI.CreateItem("← Go back", "")
                 deptPresetMenu:AddItem(GoBackItem)
                 GoBackItem.Activated = function(ParentMenu, SelectedItem)
                     deptPresetMenu:GoBack()
                 end
 
-                local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
                 deptPresetMenu:AddItem(CloseMenuItem)
                 CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                     _menuPool:CloseAllMenus()
@@ -128,39 +135,39 @@ local function CreateMenus()
                             end
                         end
                     end
-                    local GoBackItem = NativeUI.CreateItem("Go back", "")
+                    local GoBackItem = NativeUI.CreateItem("← Go back", "")
                     deptCategoryComponentMenu:AddItem(GoBackItem)
                     GoBackItem.Activated = function(ParentMenu, SelectedItem)
                         deptCategoryComponentMenu:GoBack()
                     end
 
-                    local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                    local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
                     deptCategoryComponentMenu:AddItem(CloseMenuItem)
                     CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                         _menuPool:CloseAllMenus()
                     end
                 end
 
-                local GoBackItem = NativeUI.CreateItem("Go back", "")
+                local GoBackItem = NativeUI.CreateItem("← Go back", "")
                 deptComponentMenu:AddItem(GoBackItem)
                 GoBackItem.Activated = function(ParentMenu, SelectedItem)
                     deptComponentMenu:GoBack()
                 end
 
-                local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
                 deptComponentMenu:AddItem(CloseMenuItem)
                 CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                     _menuPool:CloseAllMenus()
                 end
             end
 
-            local GoBackItem = NativeUI.CreateItem("Go back", "")
+            local GoBackItem = NativeUI.CreateItem("← Go back", "")
             deptMenu:AddItem(GoBackItem)
             GoBackItem.Activated = function(ParentMenu, SelectedItem)
                 deptMenu:GoBack()
             end
 
-            local CloseMenuItem = NativeUI.CreateItem("Close", "")
+            local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
             deptMenu:AddItem(CloseMenuItem)
             CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                 _menuPool:CloseAllMenus()
@@ -173,7 +180,7 @@ local function CreateMenus()
             SetClothingPreset(resetPedPreset)
         end
 
-        local CloseMenuItem = NativeUI.CreateItem("Close", "")
+        local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
         pedMenu:AddItem(CloseMenuItem)
         CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
             _menuPool:CloseAllMenus()
@@ -197,7 +204,7 @@ local function HandleClothingCommand()
     end
 
     if not clothingMenus[pedModel] then
-        DisplayHelpText("You need to use a valid ped to access this menu.")
+        DisplayHelpText("This ped model is not supported.")
         return
     end
 
