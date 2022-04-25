@@ -1,6 +1,6 @@
 Clothing = {
     [`mp_m_freemode_01`] = { -- This is the hashkey of the ped, note the `
-    badgeStyle = BadgeStyle.Male, -- This badge is added in front of all the ped presets.
+    badgeStyle = BadgeStyle.Male, -- This badge is added in front of all the ped presets. If you don't want any, set this to nil. Valid badgestyles can be found in the NativeUI dependency.
     {
         deptName = "Los Santos Police Department",
         presets = {
