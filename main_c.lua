@@ -69,6 +69,29 @@ local function CreateMenus()
                             SetClothingPreset(presetData)
                         end
                     end
+                    local GoBackItem = NativeUI.CreateItem("Go back", "")
+                    deptPresetCategoryMenu:AddItem(GoBackItem)
+                    GoBackItem.Activated = function(ParentMenu, SelectedItem)
+                        deptPresetCategoryMenu:GoBack()
+                    end
+
+                    local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                    deptPresetCategoryMenu:AddItem(CloseMenuItem)
+                    CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
+                        _menuPool:CloseAllMenus()
+                    end
+                end
+
+                local GoBackItem = NativeUI.CreateItem("Go back", "")
+                deptPresetMenu:AddItem(GoBackItem)
+                GoBackItem.Activated = function(ParentMenu, SelectedItem)
+                    deptPresetMenu:GoBack()
+                end
+
+                local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                deptPresetMenu:AddItem(CloseMenuItem)
+                CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
+                    _menuPool:CloseAllMenus()
                 end
             end
 
@@ -105,7 +128,42 @@ local function CreateMenus()
                             end
                         end
                     end
+                    local GoBackItem = NativeUI.CreateItem("Go back", "")
+                    deptCategoryComponentMenu:AddItem(GoBackItem)
+                    GoBackItem.Activated = function(ParentMenu, SelectedItem)
+                        deptCategoryComponentMenu:GoBack()
+                    end
+
+                    local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                    deptCategoryComponentMenu:AddItem(CloseMenuItem)
+                    CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
+                        _menuPool:CloseAllMenus()
+                    end
                 end
+
+                local GoBackItem = NativeUI.CreateItem("Go back", "")
+                deptComponentMenu:AddItem(GoBackItem)
+                GoBackItem.Activated = function(ParentMenu, SelectedItem)
+                    deptComponentMenu:GoBack()
+                end
+
+                local CloseMenuItem = NativeUI.CreateItem("Close", "")
+                deptComponentMenu:AddItem(CloseMenuItem)
+                CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
+                    _menuPool:CloseAllMenus()
+                end
+            end
+
+            local GoBackItem = NativeUI.CreateItem("Go back", "")
+            deptMenu:AddItem(GoBackItem)
+            GoBackItem.Activated = function(ParentMenu, SelectedItem)
+                deptMenu:GoBack()
+            end
+
+            local CloseMenuItem = NativeUI.CreateItem("Close", "")
+            deptMenu:AddItem(CloseMenuItem)
+            CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
+                _menuPool:CloseAllMenus()
             end
         end
 
@@ -113,6 +171,12 @@ local function CreateMenus()
         pedMenu:AddItem(resetItem)
         resetItem.Activated = function(ParentMenu, SelectedItem)
             SetClothingPreset(resetPedPreset)
+        end
+
+        local CloseMenuItem = NativeUI.CreateItem("Close", "")
+        pedMenu:AddItem(CloseMenuItem)
+        CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
+            _menuPool:CloseAllMenus()
         end
 
 
