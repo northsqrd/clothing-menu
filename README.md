@@ -1,9 +1,11 @@
 # Clothing Menu
-Didn't really plan on releasing this (hence why there isn't any git history, instructions or comments), but in the end I thought, why not. Hopefully someone will find this useful.
+Didn't really plan on releasing this as it was originally made for a private server, however I have decided to release it. Hopefully someone out there can make use of this. I've tried to make the code readable and the config understandable, but if it's difficult to understand, it's because it wasn't intended to be released.
 
-I've added some things in the config file that work with EUP version 9.3 (I think?), just to give an idea on how to configure the menu. Please do not message me asking "pls help me make config i do not know how omg!!!" because I will not do it for you. I realise that the config is a little complicated and VERY nested making readability difficult, but it works (at least I hope so..). That said, if you find any actual bugs with the menu itself and **NOT YOUR CONFIG** (make sure you add commas where needed..), please create an issue and I will take a look at it asap!
+I've added some things in the config file that work with EUP version 9.3 (I think?), just to give an idea on how to configure the menu. I realise that the config is a little complicated and VERY nested making readability difficult, but it works. Please don't go chasing me down to ask for help with your config, I will not configure things for you. That said, if you find any actual bugs with the menu itself and **NOT YOUR CONFIG** (make sure you add commas where needed..), please create an issue and I will take a look at it asap!
 
-Also, I will **not** help you restrict this to discord roles, "esx" policejob or whatever because every server has their permissions set up differently.
+Also, I will **not** help you restrict this to discord roles, "esx policejob xd" or whatever. I don't know how your permission system works and I don't want to know.
+
+If you improved on the menu, feel free to make a PR!
 
 ## Menu Banner
 I have also included a menu banner, slightly inspired by the EUP menu made for LSPDFR by PieRGud and Alex_Ashfold. If you want to change this, please look at the `stream/banner.ytd` file and edit the `banner` file within as you wish. Just make sure the resolution is 512x128. 
@@ -26,12 +28,8 @@ TriggerEvent("chat:addSuggestion", "/eup", "Opens the clothing menu.")
 RegisterCommand("eup", HandleClothingCommand)
 ```
 
-There is also a quick command for migrating / "generating" the numbers for the components and props your current ped has. This is done using the `/getclothing` command. This will automatically copy the text to your clipboard so you can paste the generated text into the config, found in `clothing.lua`. Make sure to remove components and props that are not necessary for that preset.
+There is also a quick command for migrating / "generating" the numbers for the components and props your current ped has. This is done using the `/getclothing` command. This will automatically copy the output to your clipboard so you can paste the generated numbers into the config, found in `clothing.lua`. Make sure to remove components and props that are not necessary for that preset.
 
 
 ## Credits
-[NativeUILua](https://github.com/FrazzIe/NativeUILua) - Frazzle for making the amazing NativeUILua library which is bundled with this resource.<br>
-[EUP-Menu](https://github.com/Andyyy7666/EUP-Menu) - Andyyy7666 for some of the inspiration and some of the function that actually sets your components/props.
-
-## Final words
-Hopefully my small contribution to this great community will be appreciated by those who find this useful. Feel free to do whatever you want with this, just don't come crying or sue me if something goes wrong. If you want to claim you made this so your server members are proud of you and think you have a massive brain, go ahead. Even though the license technically permits it, please, if you change one line and decide to sell it, know that you are an asshole.
+[NativeUILua](https://github.com/FrazzIe/NativeUILua) - Frazzle for making the NativeUILua library which is bundled with this resource.
