@@ -53,11 +53,14 @@ local function CreateMenus()
     for ped, pedData in pairs(Clothing) do
         local pedMenu = NativeUI.CreateMenu("Clothing", "Main Menu", cfg.menuX, cfg.menuY, "banner", "banner")
         for _, dept in ipairs(pedData) do
-            local deptMenu = _menuPool:AddSubMenu(pedMenu, dept.deptName, "", true, "banner", "banner")
+            local deptMenu = _menuPool:AddSubMenu(pedMenu, dept.deptName, "", true, true)
+            deptMenu.ParentItem:RightLabel("→→→")
             if dept.presets ~= nil and #dept.presets > 0 then
-                local deptPresetMenu = _menuPool:AddSubMenu(deptMenu, "Ped Presets", "", true, "banner", "banner")
+                local deptPresetMenu = _menuPool:AddSubMenu(deptMenu, "Ped Presets", "", true, true)
+                deptPresetMenu.ParentItem:RightLabel("→→→")
                 for _, presetCategory in ipairs(dept.presets) do
-                    local deptPresetCategoryMenu = _menuPool:AddSubMenu(deptPresetMenu, presetCategory.categoryName, "", true, "banner", "banner")
+                    local deptPresetCategoryMenu = _menuPool:AddSubMenu(deptPresetMenu, presetCategory.categoryName, "", true, true)
+                    deptPresetCategoryMenu.ParentItem:RightLabel("→→→")
                     for _, presetData in ipairs(presetCategory.presets) do
                         local presetItem = NativeUI.CreateItem(presetData.name, "")
                         presetItem:SetLeftBadge(pedData.badgeStyle ~= nil and pedData.badgeStyle or BadgeStyle.Clothes)
@@ -70,9 +73,11 @@ local function CreateMenus()
             end
 
             if dept.components ~= nil and #dept.components > 0 then
-                local deptComponentMenu = _menuPool:AddSubMenu(deptMenu, "Ped Components", "", true, "banner", "banner")
+                local deptComponentMenu = _menuPool:AddSubMenu(deptMenu, "Ped Components", "", true, true)
+                deptComponentMenu.ParentItem:RightLabel("→→→")
                 for _, category in ipairs(dept.components) do
-                    local deptCategoryComponentMenu = _menuPool:AddSubMenu(deptComponentMenu, category.categoryName, "", true, "banner", "banner")
+                    local deptCategoryComponentMenu = _menuPool:AddSubMenu(deptComponentMenu, category.categoryName, "", true, true)
+                    deptCategoryComponentMenu.ParentItem:RightLabel("→→→")
                     for _, item in ipairs(category.items) do
                         if type(item[5]) == "table" then
                             local itemData = {}
