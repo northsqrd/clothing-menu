@@ -5,7 +5,7 @@ cfg.menuX = 1420
 cfg.menuY = 0
 
 CreateThread(function()
-    while not HasStreamedTextureDictLoaded("banner") do
+    while not HasStreamedTextureDictLoaded('banner') do
         Wait(0)
     end
 end)
@@ -13,7 +13,7 @@ end)
 local _menuPool = NativeUI.CreatePool()
 
 local function DisplayHelpText(msg)
-    SetTextComponentFormat("STRING")
+    SetTextComponentFormat('STRING')
     AddTextComponentString(msg)
     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
@@ -39,14 +39,14 @@ end
 
 function SetComponent(componentData, index)
     local ped = PlayerPedId()
-    if componentData[1] == "prop" then
+    if componentData[1] == 'prop' then
         if componentData[4] == -1 then
             ClearPedProp(ped, componentData[3])
         else
             SetPedPropIndex(ped, componentData[3], componentData[4], (index ~= nil and index or componentData[5]), true)
         end
 
-    elseif componentData[1] == "component" then
+    elseif componentData[1] == 'component' then
         SetPedComponentVariation(ped, componentData[3], componentData[4], (index ~= nil and index or componentData[5]), 0)
     end
 end
@@ -56,18 +56,18 @@ local clothingMenus = {}
 -- Menu creation logic
 local function CreateMenus()
     for ped, pedData in pairs(Clothing) do
-        local pedMenu = NativeUI.CreateMenu("Clothing", "Main Menu", cfg.menuX, cfg.menuY, "banner", "banner")
+        local pedMenu = NativeUI.CreateMenu('Clothing', 'Main Menu', cfg.menuX, cfg.menuY, 'banner', 'banner')
         for _, dept in ipairs(pedData) do
-            local deptMenu = _menuPool:AddSubMenu(pedMenu, dept.deptName, "", true, true)
-            deptMenu.ParentItem:RightLabel("→→→")
+            local deptMenu = _menuPool:AddSubMenu(pedMenu, dept.deptName, '', true, true)
+            deptMenu.ParentItem:RightLabel('→→→')
             if dept.presets ~= nil and #dept.presets > 0 then
-                local deptPresetMenu = _menuPool:AddSubMenu(deptMenu, "Ped Presets", "", true, true)
-                deptPresetMenu.ParentItem:RightLabel("→→→")
+                local deptPresetMenu = _menuPool:AddSubMenu(deptMenu, 'Ped Presets', '', true, true)
+                deptPresetMenu.ParentItem:RightLabel('→→→')
                 for _, presetCategory in ipairs(dept.presets) do
-                    local deptPresetCategoryMenu = _menuPool:AddSubMenu(deptPresetMenu, presetCategory.categoryName, "", true, true)
-                    deptPresetCategoryMenu.ParentItem:RightLabel("→→→")
+                    local deptPresetCategoryMenu = _menuPool:AddSubMenu(deptPresetMenu, presetCategory.categoryName, '', true, true)
+                    deptPresetCategoryMenu.ParentItem:RightLabel('→→→')
                     for _, presetData in ipairs(presetCategory.presets) do
-                        local presetItem = NativeUI.CreateItem(presetData.name, "")
+                        local presetItem = NativeUI.CreateItem(presetData.name, '')
                         if pedData.badgeStyle ~= nil then
                             presetItem:SetLeftBadge(pedData.badgeStyle)
                         end
@@ -76,26 +76,26 @@ local function CreateMenus()
                             SetClothingPreset(presetData)
                         end
                     end
-                    local GoBackItem = NativeUI.CreateItem("← Go back", "")
+                    local GoBackItem = NativeUI.CreateItem('← Go back', '')
                     deptPresetCategoryMenu:AddItem(GoBackItem)
                     GoBackItem.Activated = function(ParentMenu, SelectedItem)
                         deptPresetCategoryMenu:GoBack()
                     end
 
-                    local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
+                    local CloseMenuItem = NativeUI.CreateItem('←←← Close', '')
                     deptPresetCategoryMenu:AddItem(CloseMenuItem)
                     CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                         _menuPool:CloseAllMenus()
                     end
                 end
 
-                local GoBackItem = NativeUI.CreateItem("← Go back", "")
+                local GoBackItem = NativeUI.CreateItem('← Go back', '')
                 deptPresetMenu:AddItem(GoBackItem)
                 GoBackItem.Activated = function(ParentMenu, SelectedItem)
                     deptPresetMenu:GoBack()
                 end
 
-                local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
+                local CloseMenuItem = NativeUI.CreateItem('←←← Close', '')
                 deptPresetMenu:AddItem(CloseMenuItem)
                 CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                     _menuPool:CloseAllMenus()
@@ -103,19 +103,19 @@ local function CreateMenus()
             end
 
             if dept.components ~= nil and #dept.components > 0 then
-                local deptComponentMenu = _menuPool:AddSubMenu(deptMenu, "Ped Components", "", true, true)
-                deptComponentMenu.ParentItem:RightLabel("→→→")
+                local deptComponentMenu = _menuPool:AddSubMenu(deptMenu, 'Ped Components', '', true, true)
+                deptComponentMenu.ParentItem:RightLabel('→→→')
                 for _, category in ipairs(dept.components) do
-                    local deptCategoryComponentMenu = _menuPool:AddSubMenu(deptComponentMenu, category.categoryName, "", true, true)
-                    deptCategoryComponentMenu.ParentItem:RightLabel("→→→")
+                    local deptCategoryComponentMenu = _menuPool:AddSubMenu(deptComponentMenu, category.categoryName, '', true, true)
+                    deptCategoryComponentMenu.ParentItem:RightLabel('→→→')
                     for _, item in ipairs(category.items) do
-                        if type(item[5]) == "table" then
+                        if type(item[5]) == 'table' then
                             local itemData = {}
                             for _, v in ipairs(item[5]) do
                                 table.insert(itemData, v[1])
                             end
 
-                            local componentListItem = NativeUI.CreateListItem(item[2], itemData, 1, "")
+                            local componentListItem = NativeUI.CreateListItem(item[2], itemData, 1, '')
                             deptCategoryComponentMenu:AddItem(componentListItem)
                             deptCategoryComponentMenu.OnListChange = function(sender, listItem, index)
                                 if componentListItem == listItem then
@@ -128,59 +128,59 @@ local function CreateMenus()
                                 end
                             end
                         else
-                            local componentItem = NativeUI.CreateItem(item[2], "")
+                            local componentItem = NativeUI.CreateItem(item[2], '')
                             deptCategoryComponentMenu:AddItem(componentItem)
                             componentItem.Activated = function(ParentMenu, SelectedItem)
                                 SetComponent(item)
                             end
                         end
                     end
-                    local GoBackItem = NativeUI.CreateItem("← Go back", "")
+                    local GoBackItem = NativeUI.CreateItem('← Go back', '')
                     deptCategoryComponentMenu:AddItem(GoBackItem)
                     GoBackItem.Activated = function(ParentMenu, SelectedItem)
                         deptCategoryComponentMenu:GoBack()
                     end
 
-                    local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
+                    local CloseMenuItem = NativeUI.CreateItem('←←← Close', '')
                     deptCategoryComponentMenu:AddItem(CloseMenuItem)
                     CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                         _menuPool:CloseAllMenus()
                     end
                 end
 
-                local GoBackItem = NativeUI.CreateItem("← Go back", "")
+                local GoBackItem = NativeUI.CreateItem('← Go back', '')
                 deptComponentMenu:AddItem(GoBackItem)
                 GoBackItem.Activated = function(ParentMenu, SelectedItem)
                     deptComponentMenu:GoBack()
                 end
 
-                local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
+                local CloseMenuItem = NativeUI.CreateItem('←←← Close', '')
                 deptComponentMenu:AddItem(CloseMenuItem)
                 CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                     _menuPool:CloseAllMenus()
                 end
             end
 
-            local GoBackItem = NativeUI.CreateItem("← Go back", "")
+            local GoBackItem = NativeUI.CreateItem('← Go back', '')
             deptMenu:AddItem(GoBackItem)
             GoBackItem.Activated = function(ParentMenu, SelectedItem)
                 deptMenu:GoBack()
             end
 
-            local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
+            local CloseMenuItem = NativeUI.CreateItem('←←← Close', '')
             deptMenu:AddItem(CloseMenuItem)
             CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
                 _menuPool:CloseAllMenus()
             end
         end
 
-        local resetItem = NativeUI.CreateItem("~r~Reset Ped", "This will reset your clothing back to a default state.")
+        local resetItem = NativeUI.CreateItem('~r~Reset Ped', 'This will reset your clothing back to a default state.')
         pedMenu:AddItem(resetItem)
         resetItem.Activated = function(ParentMenu, SelectedItem)
             SetClothingPreset(resetPedPreset)
         end
 
-        local CloseMenuItem = NativeUI.CreateItem("←←← Close", "")
+        local CloseMenuItem = NativeUI.CreateItem('←←← Close', '')
         pedMenu:AddItem(CloseMenuItem)
         CloseMenuItem.Activated = function(ParentMenu, SelectedItem)
             _menuPool:CloseAllMenus()
@@ -204,18 +204,18 @@ local function HandleClothingCommand()
     end
 
     if not clothingMenus[pedModel] then
-        DisplayHelpText("This ped model is not supported.")
+        DisplayHelpText('This ped model is not supported.')
         return
     end
 
     clothingMenus[pedModel]:Visible(true)
 end
 
-TriggerEvent("chat:addSuggestion", "/clothing", "Opens the clothing menu.")
-RegisterCommand("clothing", HandleClothingCommand)
+TriggerEvent('chat:addSuggestion', '/clothing', 'Opens the clothing menu.')
+RegisterCommand('clothing', HandleClothingCommand)
 
-TriggerEvent("chat:addSuggestion", "/eup", "Opens the clothing menu.")
-RegisterCommand("eup", HandleClothingCommand)
+TriggerEvent('chat:addSuggestion', '/eup', 'Opens the clothing menu.')
+RegisterCommand('eup', HandleClothingCommand)
 
 
 CreateThread(function()
@@ -227,10 +227,10 @@ CreateThread(function()
 end)
 
 
-local clothingIdentifierNames = {components={[0]="Head (Remove unless needed for preset)",[1]="Mask / Facial Hair (Remove unless needed for preset)",[2]="Hair style (Remove unless needed for preset)",[3]="Hands / Upper Body",[4]="Legs / pants",[5]="Hands / Upper Body",[6]="Foot",[7]="Neck / Holsters",[8]="Shirt / Accessory",[9]="Body Armor / Accessory 2",[10]="Badges and Logos",[11]="Shirt Overlay / Jackets"},props={[0]="Hats / Helmets",[1]="Glasses",[2]="Misc / Ear Accessories",[3]="Watches",[4]="Bracelets"}}
+local clothingIdentifierNames = {components={[0]='Head (Remove unless needed for preset)',[1]='Mask / Facial Hair (Remove unless needed for preset)',[2]='Hair style (Remove unless needed for preset)',[3]='Hands / Upper Body',[4]='Legs / pants',[5]='Hands / Upper Body',[6]='Foot',[7]='Neck / Holsters',[8]='Shirt / Accessory',[9]='Body Armor / Accessory 2',[10]='Badges and Logos',[11]='Shirt Overlay / Jackets'},props={[0]='Hats / Helmets',[1]='Glasses',[2]='Misc / Ear Accessories',[3]='Watches',[4]='Bracelets'}}
 
-TriggerEvent("chat:addSuggestion", "/getclothing", "Debug command to get the numbers of all the components and props.")
-RegisterCommand("getclothing", function()
+TriggerEvent('chat:addSuggestion', '/getclothing', 'Debug command to get the numbers of all the components and props.')
+RegisterCommand('getclothing', function()
     local ped = PlayerPedId()
     local props = {}
     local components = {}
@@ -247,18 +247,18 @@ RegisterCommand("getclothing", function()
         table.insert(components, {i, component, componentHash})
     end
 
-    local finalString = ""
-    finalString = finalString .. "props = {\n"
+    local finalString = ''
+    finalString = finalString .. 'props = {\n'
     for k, v in ipairs(props) do
-        finalString = finalString .. string.format("    {%d, %d, %d}, --%s\n", v[1], v[2], v[3], clothingIdentifierNames.props[k - 1])
+        finalString = finalString .. string.format('    {%d, %d, %d}, --%s\n', v[1], v[2], v[3], clothingIdentifierNames.props[k - 1])
     end
-    finalString = finalString .. "},\n"
+    finalString = finalString .. '},\n'
 
-    finalString = finalString .. "components = {\n"
+    finalString = finalString .. 'components = {\n'
     for k, v in ipairs(components) do
-        finalString = finalString .. string.format("   %s{%d, %d, %d}, --%s\n", ((k == 1 or k == 3 ) and "--" or ""), v[1], v[2], v[3], clothingIdentifierNames.components[k - 1])
+        finalString = finalString .. string.format('   %s{%d, %d, %d}, --%s\n', ((k == 1 or k == 3 ) and '--' or ''), v[1], v[2], v[3], clothingIdentifierNames.components[k - 1])
     end
-    finalString = finalString .. "},"
+    finalString = finalString .. '},'
 
     SendNUIMessage({
         str = finalString

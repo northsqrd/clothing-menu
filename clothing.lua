@@ -2,13 +2,13 @@ Clothing = {
     [`mp_m_freemode_01`] = { -- This is the hashkey of the ped, note the `
     badgeStyle = BadgeStyle.Male, -- This badge is added in front of all the ped presets. If you don't want any, set this to nil. Valid badgestyles can be found in the NativeUI dependency.
     {
-        deptName = "Los Santos Police Department",
+        deptName = 'Los Santos Police Department',
         presets = {
             {
-                categoryName = "Patrol",
+                categoryName = 'Patrol',
                 presets = {
                     {
-                        name = "Class A",
+                        name = 'Class A',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -32,7 +32,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Class B",
+                        name = 'Class B',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -56,7 +56,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Class C",
+                        name = 'Class C',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -80,7 +80,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Jacket",
+                        name = 'Jacket',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -104,7 +104,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Raincoat",
+                        name = 'Raincoat',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -130,10 +130,10 @@ Clothing = {
                 }
             },
             {
-                categoryName = "Motor Unit",
+                categoryName = 'Motor Unit',
                 presets = {
                     {
-                        name = "Class A",
+                        name = 'Class A',
                         props = {
                             {0, 17, 1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -157,7 +157,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Class B",
+                        name = 'Class B',
                         props = {
                             {0, 17, 1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -181,7 +181,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Class C",
+                        name = 'Class C',
                         props = {
                             {0, 17, 1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -207,10 +207,10 @@ Clothing = {
                 }
             },
             {
-                categoryName = "Utility",
+                categoryName = 'Utility',
                 presets = {
                     {
-                        name = "Class B",
+                        name = 'Class B',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -234,7 +234,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Class C",
+                        name = 'Class C',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -258,7 +258,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Traffic Class B",
+                        name = 'Traffic Class B',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -282,7 +282,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Traffic Class C",
+                        name = 'Traffic Class C',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -309,10 +309,10 @@ Clothing = {
             },
             
             {
-                categoryName = "K9",
+                categoryName = 'K9',
                 presets = {
                     {
-                        name = "Class B",
+                        name = 'Class B',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -336,7 +336,7 @@ Clothing = {
                         },
                     },
                     {
-                        name = "Class C",
+                        name = 'Class C',
                         props = {
                             {0, -1, -1}, --Hats / Helmets
                             {1, -1, -1}, --Glasses
@@ -364,36 +364,36 @@ Clothing = {
         },
         components = {
             {
-                categoryName = "Hats",
+                categoryName = 'Hats',
                 items = {
-                    {"prop", "~r~Remove Hat", 0, -1, 0},
-                    {"prop", "Winter Hat", 0, 8, {
-                        {"Camo", 0},
-                        {"Beige", 1},
-                        {"Black", 2}
+                    {'prop', '~r~Remove Hat', 0, -1, 0},
+                    {'prop', 'Winter Hat', 0, 8, {
+                        {'Camo', 0},
+                        {'Beige', 1},
+                        {'Black', 2}
                     }},
                 }
             },
             {
-                categoryName = "Vests",
+                categoryName = 'Vests',
                 items = {
-                    {"component", "~r~Remove Vest", 9, -1, 0},
-                    {"component", "Small Vest", 9, 4, 0}
+                    {'component', '~r~Remove Vest', 9, -1, 0},
+                    {'component', 'Small Vest', 9, 4, 0}
                 }
             }
         },
     },
     {
-        deptName = "Department 2",
+        deptName = 'Department 2',
     }
 },
 [`mp_f_freemode_01`] = {
     badgeStyle = BadgeStyle.Female,
     {
-        deptName = "Department 1",
+        deptName = 'Department 1',
     },
     {
-        deptName = "Department 2",
+        deptName = 'Department 2',
     },
 },
 }
